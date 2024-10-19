@@ -15,7 +15,6 @@ import ToppingForm from "./pages/Topping/ToppingForm";
 import SizeTable from "./pages/Size/SizeTable";
 import SizeForm from "./pages/Size/SizeForm";
 import BankTable from "./pages/Bank/BankTable";
-import BankTable2 from "./pages/Bank/BankTable2";
 import BankForm from "./pages/Bank/BankForm";
 import PaymentMethodTable from "./pages/PaymentMethod/PaymentMethodTable";
 import PaymentMethodForm from "./pages/PaymentMethod/PaymentMethodForm";
@@ -36,7 +35,6 @@ import OrderTableAnt from "./pages/Order/OrderTableAnt";
 import ChartJS from "./pages/ChartJSTutorial/ChartJS";
 import UserTableAnt from "./pages/User/UserTableAnt";
 import ReviewTable from "./pages/Review/ReviewTable";
-import ReviewTable2 from "./pages/Review/ReviewTable2";
 import Login from "./pages/Login/Login";
 import { StoreContext } from "./context/StoreContext";
 import OrderByStaff from "./pages/OrderByStaff/OrderByStaff";
@@ -103,8 +101,6 @@ const App = () => {
               <Route path="/admin/banks" element={<BankTable />}></Route>
               <Route path="/admin/banks/add" element={<BankForm />}></Route>
               <Route path="/admin/edit-bank/:id" element={<BankForm />}></Route>
-
-              <Route path="/admin/banks2" element={<BankTable2 />}></Route>
 
               <Route
                 path="/admin/payment-methods"
@@ -180,7 +176,6 @@ const App = () => {
                 element={<UserTableAnt />}
               ></Route>
               <Route path="/admin/reviews" element={<ReviewTable />}></Route>
-              <Route path="/admin/reviews2" element={<ReviewTable2 />}></Route>
 
               <Route path="/admin/dashboard" element={<ChartJS />}></Route>
               <Route path="/admin/login" element={<Login />}></Route>
