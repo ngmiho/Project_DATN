@@ -22,6 +22,9 @@ public class Category {
     @Column(columnDefinition = "nvarchar(255)")
     private String name;
 
+    @Column
+    private Integer sub;
+
     @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Drink> drinks;

@@ -77,6 +77,7 @@ const OrderTableAnt = () => {
       title: "Order Date",
       dataIndex: "createDate",
       width: 200,
+      defaultSortOrder: "descend",
       render: (createDate) => (
         <>{dateFormat(createDate, "dd/MM/yyyy, HH:mm:ss")}</>
       ),

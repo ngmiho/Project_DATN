@@ -9,6 +9,7 @@ import { fetchGetVoucherTypeById } from "../../services/VoucherTypeService";
 import { Space, Table } from "antd";
 import { NumericFormat } from "react-number-format";
 import { format as dateFormat } from "date-fns";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const VoucherTable = () => {
   const [vouchers, setVouchers] = useState([]);
@@ -135,20 +136,16 @@ const VoucherTable = () => {
       dataIndex: "id",
       key: "action",
       render: (_, voucher) => (
-        <Space size="middle">
-          <button
-            className="templatemo-edit-btn"
+        <>
+          <EditOutlined
             onClick={() => navigator(`/admin/edit-voucher/${voucher.id}`)}
-          >
-            Edit
-          </button>
-          <button
-            className="templatemo-delete-btn"
+            style={{ marginRight: 10 }}
+          />
+          <DeleteOutlined
+            style={{ color: "red" }}
             onClick={() => deleteVoucher(voucher.id)}
-          >
-            Delete
-          </button>
-        </Space>
+          />
+        </>
       ),
     },
   ];

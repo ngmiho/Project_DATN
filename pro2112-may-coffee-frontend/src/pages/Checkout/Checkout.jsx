@@ -297,14 +297,14 @@ const Checkout = () => {
   };
 
   return (
-    <div className="container mt-3 shadow-sm rounded py-3">
+    <div className="container mt-3 shadow-sm rounded py-5">
       <div className="row mb-3">
         <div className="card border-0">
-          <h4>{t("Your Order")}</h4>
-          <div className="table-responsive">
+          <h3>{t("Your Order")}</h3>
+          <div className="table-responsive my-3">
             <table className="table">
               <thead>
-                <tr className="text-center ">
+                <tr className="text-center">
                   <th>#</th>
                   <th>{t("Drink")}</th>
                   <th>{t("Price")}</th>
@@ -337,7 +337,7 @@ const Checkout = () => {
                         />
                       </td>
                       <td>
-                        <span className="badge rounded-pill text-bg-secondary py-2 px-4">
+                        <span className="badge rounded-pill text-bg-warning py-2 px-4">
                           {cartItem.size && cartItem.size.character}
                         </span>
                       </td>
@@ -370,7 +370,6 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -616,7 +615,11 @@ const Checkout = () => {
                       <button
                         type="submit"
                         className="btn btn-outline-white text-white"
-                        style={{ backgroundColor: "#e57905" }}
+                        style={{
+                          backgroundColor: "#e57905",
+                          minWidth: 130,
+                          height: 40,
+                        }}
                       >
                         {t("Place Order")}
                       </button>

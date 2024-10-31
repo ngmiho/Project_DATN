@@ -12,4 +12,5 @@ import lombok.experimental.FieldDefaults;
 public class CategoryRequest {
     @NotEmpty(message = "NOT_EMPTY_CATEGORY_NAME")
     String name;
+    Integer sub;
 }

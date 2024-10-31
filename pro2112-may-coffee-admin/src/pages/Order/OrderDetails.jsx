@@ -74,7 +74,7 @@ const OrderDetails = () => {
             marginBottom: 20,
           }}
         >
-          <h2>Order Details</h2>
+          <h1>Order Details</h1>
         </div>
         <div className="panel panel-default table-responsive">
           <table className="table table-striped table-bordered templatemo-user-table">
@@ -162,148 +162,147 @@ const OrderDetails = () => {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div className="templatemo-flex-row flex-content-row">
-        <div className="col-1">
-          <div className="panel panel-default margin-10">
-            <div className="panel-heading">
-              <h2 className="text-uppercase">Delivery Information</h2>
-            </div>
-            <div className="panel-body">
-              {order && (
-                <Formik initialValues={initialValues} enableReinitialize>
-                  {(formik) => (
-                    <Form className="templatemo-login-form">
-                      <div className="row form-group">
-                        <div className="col-lg-6 col-md-6">
-                          <FormikControl
-                            control="input"
-                            label="First name"
-                            name="firstName"
-                            readOnly
-                          />
+        <div className="templatemo-flex-row flex-content-row">
+          <div className="col-1">
+            <div className="panel panel-default margin-10">
+              <div className="panel-heading">
+                <h2 className="text-uppercase">Delivery Information</h2>
+              </div>
+              <div className="panel-body">
+                {order && (
+                  <Formik initialValues={initialValues} enableReinitialize>
+                    {(formik) => (
+                      <Form className="templatemo-login-form">
+                        <div className="row form-group">
+                          <div className="col-lg-6 col-md-6">
+                            <FormikControl
+                              control="input"
+                              label="First name"
+                              name="firstName"
+                              readOnly
+                            />
+                          </div>
+                          <div className="col-lg-6 col-md-6">
+                            <FormikControl
+                              control="input"
+                              label="Last name"
+                              name="lastName"
+                              readOnly
+                            />
+                          </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
-                          <FormikControl
-                            control="input"
-                            label="Last name"
-                            name="lastName"
-                            readOnly
-                          />
+
+                        <FormikControl
+                          control="input"
+                          label="Email"
+                          name="email"
+                          readOnly
+                        />
+
+                        <FormikControl
+                          control="input"
+                          label="Phone number"
+                          name="phoneNumber"
+                          readOnly
+                        />
+
+                        <FormikControl
+                          control="input"
+                          label="Street number"
+                          name="address.streetNumber"
+                          readOnly
+                        />
+
+                        <div className="row form-group">
+                          <div className="col-md-4">
+                            <FormikControl
+                              control="input"
+                              label="Ward"
+                              name="address.ward"
+                              readOnly
+                            />
+                          </div>
+                          <div className="col-md-4">
+                            <FormikControl
+                              control="input"
+                              label="District"
+                              name="address.district"
+                              readOnly
+                            />
+                          </div>
+                          <div className="col-md-4">
+                            <FormikControl
+                              control="input"
+                              label="Province"
+                              name="address.province"
+                              readOnly
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      <FormikControl
-                        control="input"
-                        label="Email"
-                        name="email"
-                        readOnly
-                      />
-
-                      <FormikControl
-                        control="input"
-                        label="Phone number"
-                        name="phoneNumber"
-                        readOnly
-                      />
-
-                      <FormikControl
-                        control="input"
-                        label="Street number"
-                        name="address.streetNumber"
-                        readOnly
-                      />
-
-                      <div className="row form-group">
-                        <div className="col-md-4">
-                          <FormikControl
-                            control="input"
-                            label="Ward"
-                            name="address.ward"
-                            readOnly
-                          />
-                        </div>
-                        <div className="col-md-4">
-                          <FormikControl
-                            control="input"
-                            label="District"
-                            name="address.district"
-                            readOnly
-                          />
-                        </div>
-                        <div className="col-md-4">
-                          <FormikControl
-                            control="input"
-                            label="Province"
-                            name="address.province"
-                            readOnly
-                          />
-                        </div>
-                      </div>
-
-                      <FormikControl
-                        control="input"
-                        label="Payment"
-                        name="paymentMethod"
-                        readOnly
-                      />
-                    </Form>
-                  )}
-                </Formik>
-              )}
+                        <FormikControl
+                          control="input"
+                          label="Payment"
+                          name="paymentMethod"
+                          readOnly
+                        />
+                      </Form>
+                    )}
+                  </Formik>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-1">
-          <div className="panel panel-default margin-10">
-            <div className="panel-heading">
-              <h2 className="text-uppercase">Order Totals</h2>
-            </div>
-            {order && (
-              <div className="panel-body">
-                <div className="table-responsive">
-                  <table className="table">
-                    <tbody>
-                      <tr>
-                        <td style={{ paddingLeft: 0 }}>Quantity</td>
-                        <td style={{ paddingRight: 0, textAlign: "right" }}>
-                          {order.totalItems}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style={{ paddingLeft: 0 }}>Subtotal</td>
-                        <td style={{ paddingRight: 0, textAlign: "right" }}>
-                          <NumericFormat
-                            value={order.totalPrice}
-                            displayType="text"
-                            thousandSeparator=","
-                            suffix=" đ"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style={{ paddingLeft: 0 }}>Delivery Fee</td>
-                        <td style={{ paddingRight: 0, textAlign: "right" }}>
-                          Free
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style={{ paddingLeft: 0 }}>Total</th>
-                        <th style={{ paddingRight: 0, textAlign: "right" }}>
-                          <NumericFormat
-                            value={order.totalPrice}
-                            displayType="text"
-                            thousandSeparator=","
-                            suffix=" đ"
-                          />
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <div className="col-1">
+            <div className="panel panel-default margin-10">
+              <div className="panel-heading">
+                <h2 className="text-uppercase">Order Totals</h2>
               </div>
-            )}
+              {order && (
+                <div className="panel-body">
+                  <div className="table-responsive">
+                    <table className="table">
+                      <tbody>
+                        <tr>
+                          <td style={{ paddingLeft: 0 }}>Quantity</td>
+                          <td style={{ paddingRight: 0, textAlign: "right" }}>
+                            {order.totalItems}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ paddingLeft: 0 }}>Subtotal</td>
+                          <td style={{ paddingRight: 0, textAlign: "right" }}>
+                            <NumericFormat
+                              value={order.totalPrice}
+                              displayType="text"
+                              thousandSeparator=","
+                              suffix=" đ"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ paddingLeft: 0 }}>Delivery Fee</td>
+                          <td style={{ paddingRight: 0, textAlign: "right" }}>
+                            Free
+                          </td>
+                        </tr>
+                        <tr>
+                          <th style={{ paddingLeft: 0 }}>Total</th>
+                          <th style={{ paddingRight: 0, textAlign: "right" }}>
+                            <NumericFormat
+                              value={order.totalPrice}
+                              displayType="text"
+                              thousandSeparator=","
+                              suffix=" đ"
+                            />
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

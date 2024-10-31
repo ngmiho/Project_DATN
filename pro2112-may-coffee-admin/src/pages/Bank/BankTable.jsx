@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchAllBanks, deleteBankById } from "../../services/BankService";
-
 import { Space, Table } from "antd";
+import {
+  EditOutlined,
+  SearchOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 const BankTable = () => {
   const [banks, setBanks] = useState([]);
@@ -56,20 +60,16 @@ const BankTable = () => {
       dataIndex: "id",
       key: "action",
       render: (_, bank) => (
-        <Space size="middle">
-          <button
-            className="templatemo-edit-btn"
+        <>
+          <EditOutlined
             onClick={() => navigator(`/admin/edit-bank/${bank.id}`)}
-          >
-            Edit
-          </button>
-          <button
-            className="templatemo-delete-btn"
+            style={{ marginRight: 10 }}
+          />
+          <DeleteOutlined
+            style={{ color: "red" }}
             onClick={() => deleteBank(bank.id)}
-          >
-            Delete
-          </button>
-        </Space>
+          />
+        </>
       ),
     },
   ];
@@ -84,7 +84,7 @@ const BankTable = () => {
           marginBottom: 20,
         }}
       >
-        <h2>Bank Management</h2>
+        <h1>Bank Management</h1>
         <button
           className="templatemo-blue-button"
           onClick={() => navigator("/admin/banks/add")}

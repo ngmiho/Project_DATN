@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchGetAllDrinks } from "../../services/DrinkService";
 import { Link } from "react-router-dom";
+import HomeBannerCarousel from "./HomeBannerCarousel";
 import { NumericFormat } from "react-number-format";
-import { getVouchers } from "../../services/HomeService";
 import { useTranslation } from "react-i18next";
-import view0 from "../../view0.png";
-import { Button, Container, Row, Col } from "reactstrap";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -28,32 +26,35 @@ const Home = () => {
 
   return (
     <>
-      <div className="container shadow-sm rounded pt-3">
-        <h1 className="font-bold break-normal text-2xl md:text-4xl">
-          {t("Popular Drinks")}
-        </h1>
-        <div className="popular-drink row  ">
-          {drinks &&
-            drinks.length &&
-            drinks.slice(0, 6).map((drink, index) => (
-              <div
-                className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink"
-                key={`drink-${index}`}
-              >
-                <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
-                  <a
-                    href="#"
-                    className="flex flex-wrap no-underline hover:no-underline"
+      <HomeBannerCarousel />
+
+      <div className="container shadow-sm rounded">
+        <div className="row align-items-center my-5">
+          <div className="row">
+            <div className="col-6 col-md-4 col-lg-6">
+              <div className="card border-0 shadow p-3 mb-5 mt-4 bg-body-tertiary rounded">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8nR06sXcsgqi0di8Rx96issMJcnyVGL0qGQ&s"
+                  className="card-img-top h-50"
+                  alt="#"
+                />
+              </div>
+            </div>
+            {drinks &&
+              drinks.length &&
+              drinks.slice(0, 6).map((drink, index) => (
+                <div className="col-6 col-md-4 col-lg-3" key={`drink-${index}`}>
+                  <Link
+                    className="nav-link card border-0 shadow p-3 mb-5 bg-body-tertiary rounded"
+                    to={`/drinks/${drink.id}`}
                   >
                     <img
-                      className="h-64 w-full rounded-t pb-6"
                       src={drink.images[0]}
+                      className="card-img-top h-50"
                       alt={drink.name}
                     />
-                    <div className="w-full font-bold text-xl text-gray-900 px-6">
-                      <Link to={`/drinks/${drink.id}`} className="nav-link">
-                        <h5 className="card-title">{drink.name}</h5>
-                      </Link>
+                    <div className="card-body px-0">
+                      <h5 className="card-title">{drink.name}</h5>
                       <NumericFormat
                         className="card-text text-secondary"
                         value={drink.price}
@@ -62,28 +63,43 @@ const Home = () => {
                         suffix=" đ"
                       />
                     </div>
-                  </a>
+                  </Link>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
-      </div>
 
-      <div class="flex flex-wrap justify-between pt-12 -mx-6">
-        <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg ">
-            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6"></div>
-            <div className="w-full font-bold text-xl text-gray-900 px-6">
-              Không gian của quán
+        <div className="row align-items-center my-5">
+          <div className="col-md-8">
+            <img
+              src="https://trungnguyencoffeevn.com/wp-content/uploads/2019/07/BBVIYT3.jpg"
+              className="img-fluid rounded"
+              alt="..."
+              style={{ minWidth: 860 }}
+            />
+          </div>
+          <div className="col-md-4 px-5">
+            <div className="card-body text-center">
+              <h5 className="card-title">
+                Ly cà phê thơm ngon được làm từ hạt và bột cà phê Trung Nguyên
+                chất lượng nhất!
+              </h5>
             </div>
           </div>
-          <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6"></div>
         </div>
-        <div className="w-full md:w-2/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+
+        <div className="row align-items-center my-5 py-4">
+          <div className="col-md-4 px-5">
+            <div className="card-body text-center">
+              <h1 className="card-title">View Of</h1>
+              <h1 className="card-title">May Coffee & Tea</h1>
+            </div>
+          </div>
+          <div className="col-md-8 align-items-right">
             <img
-              className="h-full w-full rounded-t pb-6"
-              style={{ backgroundImage: `url(${view0})`, height: 280 }}
+              src="https://m.media-amazon.com/images/I/91dGZoIuy1L.jpg"
+              className="img-fluid rounded"
+              alt="..."
             />
           </div>
         </div>

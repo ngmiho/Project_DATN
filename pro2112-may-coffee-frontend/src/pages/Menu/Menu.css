@@ -1,0 +1,9 @@
+.list-group-item.brown-active.active {
+    background-color: #8B4513 !important;
+    color: white !important; 
+  }
+  
+  .list-group-item:hover {
+    background-color: #8B4513 !important; 
+    color: white !important; 
+  }

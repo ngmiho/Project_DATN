@@ -158,13 +158,13 @@ const Order = () => {
         <Space size="middle">
           <td>
             <button
-              className="btn btn-outline-primary m-2"
+              className="btn btn-warning m-2"
               onClick={() => navigator(`/order-details/${order.id}`)}
             >
               {t("Details")}
             </button>
             <button
-              className="btn btn-outline-primary m-2"
+              className="btn btn-warning m-2"
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
@@ -178,7 +178,7 @@ const Order = () => {
               {t("Review")}
             </button>
             <button
-              className={`btn btn-outline-danger ${
+              className={`btn btn-danger ${
                 order.orderStatus.id > 1 ? "disabled" : ""
               }`}
               onClick={() => handleCancel(order.id)}
@@ -205,10 +205,12 @@ const Order = () => {
                   marginBottom: 20,
                 }}
               >
-                <h4>{t("Your Orders")}</h4>
+                <h1>{t("Your Orders")}</h1>
               </div>
-              <div className="panel panel-default table-responsive">
-                <Table columns={columns} dataSource={orders} />
+              <div className="card shadow">
+                <div className="card-body table-responsive">
+                  <Table columns={columns} dataSource={orders} />
+                </div>
               </div>
             </div>
             <div
@@ -264,27 +266,37 @@ const Order = () => {
                           <div className="col-12 py-2">
                             <FormikControl
                               control="textarea"
-                              label="Comment"
+                              label={t("Comment")}
                               name="comment"
                             />
                           </div>
                         </div>
-                        <div className="modal-footer">
-                          <button
-                            type="reset"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            {t("Cancel")}
-                          </button>
-
+                        <div className="">
                           <button
                             type="submit"
-                            className="btn btn-outline-white text-white"
-                            style={{ backgroundColor: "#e57905" }}
+                            className="btn btn-warning me-2"
                             data-bs-dismiss="modal"
+                            style={{ minWidth: 130, height: 40 }}
                           >
                             {t("Send")}
+                          </button>
+                          <button
+                            type="reset"
+                            className="btn"
+                            style={{
+                              minWidth: 130,
+                              height: 40,
+                              backgroundColor: "#FEF08A",
+                              color: "black",
+                            }}
+                            onMouseEnter={(e) =>
+                              (e.target.style.backgroundColor = "#FDE047")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor = "#FEF08A")
+                            }
+                          >
+                            {t("Cancel")}
                           </button>
                         </div>
                       </Form>

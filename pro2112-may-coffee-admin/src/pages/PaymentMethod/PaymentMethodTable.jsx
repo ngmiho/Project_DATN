@@ -6,6 +6,11 @@ import {
   deletePaymentMethodById,
 } from "../../services/PaymentMethodService";
 import { Space, Table } from "antd";
+import {
+  EditOutlined,
+  SearchOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 const PaymentMethodTable = () => {
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -57,22 +62,18 @@ const PaymentMethodTable = () => {
       dataIndex: "id",
       key: "action",
       render: (_, paymentMethod) => (
-        <Space size="middle">
-          <button
-            className="templatemo-edit-btn"
+        <>
+          <EditOutlined
             onClick={() =>
-              navigator(`/admin/edit-payment-methods/${paymentMethod.id}`)
+              navigator(`/admin/edit-payment-method/${paymentMethod.id}`)
             }
-          >
-            Edit
-          </button>
-          <button
-            className="templatemo-delete-btn"
+            style={{ marginRight: 10 }}
+          />
+          <DeleteOutlined
+            style={{ color: "red" }}
             onClick={() => deletePaymentMethod(paymentMethod.id)}
-          >
-            Delete
-          </button>
-        </Space>
+          />
+        </>
       ),
     },
   ];

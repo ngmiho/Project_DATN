@@ -43,6 +43,7 @@ const HomeBannerCarousel = () => {
               <img
                 src={bannerImage.image}
                 className="d-block w-100"
+                style={{ height: 400 }}
                 alt="Home banner"
               />
             </div>

@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchAllReview } from "../../services/ReviewService";
 import { Space, Table } from "antd";
+import {
+  EditOutlined,
+  SearchOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 const ReviewTable = () => {
   const [reviews, setReviews] = useState([]);

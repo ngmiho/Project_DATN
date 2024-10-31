@@ -4,17 +4,16 @@ import * as Yup from "yup";
 import FormikControl from "../../components/FormControl/FormikControl";
 import { putForgotPassword } from "../../services/UserService";
 import { toast } from "react-toastify";
-import {useTranslation} from 'react-i18next'
-
+import { useTranslation } from "react-i18next";
 
 const ForgotPassword = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const initialValues = {
     email: "",
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email(t("Invalid email")).required(t('required')),
+    email: Yup.string().email(t("Invalid email")).required(t("required")),
   });
 
   const onSubmit = (values) => {
@@ -36,32 +35,61 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container my-3">
-      <div className="row">
-        <div className="card col-10 col-md-6 mx-auto shadow-sm border-0 rounded-4">
-          <div className="card-body">
-            <h3 className="text-center">{t('Forgot Password')}</h3>
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-              validateOnChange={false}
-            >
-              {(formik) => (
-                <Form>
-                  <FormikControl control="input" label="Email" name="email" />
+    <div className="container my-5">
+      <div className="card text-bg-dark">
+        <img
+          src="https://thumbs.dreamstime.com/b/empty-wood-table-blur-cafe-coffee-shop-background-top-152533401.jpg"
+          className="card-img "
+          alt="..."
+          style={{ height: 600 }}
+        />
+        <div className="card-img-overlay mt-5">
+          <div className="card col-md-6 mx-auto shadow border-1 rounded-4 p-5 mt-5">
+            <div className="card-body">
+              <h1 className="card-title text-center mb-4">
+                {t("Forgot Password")}
+              </h1>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+                validateOnChange={false}
+              >
+                {(formik) => (
+                  <Form>
+                    <FormikControl control="input" label="Email" name="email" />
 
-                  <div className="mb-3">
-                    <button type="submit" className="btn btn-primary me-2">
-                    {t('Reset Password')}
-                    </button>
-                    <button type="reset" className="btn btn-secondary">
-                    {t('Cancel')}
-                    </button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                    <div className="mb-3">
+                      <button
+                        type="submit"
+                        className="btn btn-warning me-2"
+                        style={{ minWidth: 130, height: 40 }}
+                      >
+                        {t("Reset Password")}
+                      </button>
+                      <button
+                        type="reset"
+                        className="btn"
+                        style={{
+                          minWidth: 130,
+                          height: 40,
+                          backgroundColor: "#FEF08A",
+                          color: "black",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.target.style.backgroundColor = "#FDE047")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.target.style.backgroundColor = "#FEF08A")
+                        }
+                      >
+                        {t("Cancel")}
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>

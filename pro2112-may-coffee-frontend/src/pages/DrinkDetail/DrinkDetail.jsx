@@ -181,7 +181,7 @@ const DrinkDetail = () => {
                                         }}
                                       />
                                       <label
-                                        className="btn btn-outline-secondary me-2 mb-2"
+                                        className="btn btn-outline-warning me-2 mb-2"
                                         htmlFor={`drinkSize-${drinkSize.size.id}`}
                                       >
                                         {drinkSize.size.name} +{" "}
@@ -224,7 +224,7 @@ const DrinkDetail = () => {
                                       }}
                                     />
                                     <label
-                                      className="btn btn-outline-secondary me-2 mb-2"
+                                      className="btn btn-outline-warning me-2 mb-2"
                                       htmlFor={`topping-${topping.id}`}
                                     >
                                       {topping.name} + {topping.price} đ
@@ -261,21 +261,19 @@ const DrinkDetail = () => {
           <div className="related-drink row">
             {drinks &&
               drinks.length &&
-              drinks.map((drink, index) => (
-                <div
-                  className="col-6 col-md-4 col-lg-3 mb-3"
-                  key={`drink-${index}`}
-                >
-                  <div className="card border-0">
+              drinks.slice(0, 4).map((drink, index) => (
+                <div className="col-6 col-md-4 col-lg-3" key={`drink-${index}`}>
+                  <Link
+                    className="nav-link card border-0 shadow p-3 mb-5 bg-body-tertiary rounded"
+                    to={`/drinks/${drink.id}`}
+                  >
                     <img
                       src={drink.images[0]}
                       className="card-img-top h-50"
                       alt={drink.name}
                     />
                     <div className="card-body px-0">
-                      <Link to={`/drinks/${drink.id}`} className="nav-link">
-                        <h5 className="card-title">{drink.name}</h5>
-                      </Link>
+                      <h5 className="card-title">{drink.name}</h5>
                       <NumericFormat
                         className="card-text text-secondary"
                         value={drink.price}
@@ -284,7 +282,7 @@ const DrinkDetail = () => {
                         suffix=" đ"
                       />
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
           </div>

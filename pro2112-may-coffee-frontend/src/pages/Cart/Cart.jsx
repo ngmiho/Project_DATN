@@ -3,11 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { NumericFormat } from "react-number-format";
 import { toast } from "react-toastify";
-import {useTranslation} from 'react-i18next'
-
+import { useTranslation } from "react-i18next";
 
 const Cart = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { cart, updateItemQuantity, removeFromCart } = useContext(StoreContext);
 
   const navigator = useNavigate();
@@ -45,19 +44,19 @@ const Cart = () => {
     <div className="container mt-3 shadow-sm rounded py-3">
       <div className="row mb-3">
         <div className="card border-0">
-          <h4>{t('Your Cart')}</h4>
+          <h1>{t("Your Cart")}</h1>
           <div className="table-responsive">
             <table className="table">
               <thead>
                 <tr className="text-center">
-                  <th>{t('Drink')}</th>
-                  <th>{t('Name')}</th>
-                  <th>{t('Price')}</th>
-                  <th>{t('Size')}</th>
-                  <th>{t('Topping')}</th>
-                  <th>{t('Quantity')}</th>
-                  <th>{t('Total')}</th>
-                  <th>{t('Remove')}</th>
+                  <th>{t("Drink")}</th>
+                  <th>{t("Name")}</th>
+                  <th>{t("Price")}</th>
+                  <th>{t("Size")}</th>
+                  <th>{t("Topping")}</th>
+                  <th>{t("Quantity")}</th>
+                  <th>{t("Total")}</th>
+                  <th>{t("Remove")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,7 +90,7 @@ const Cart = () => {
                         />
                       </td>
                       <td>
-                        <span className="badge rounded-pill text-bg-secondary py-2 px-4">
+                        <span className="badge rounded-pill text-bg-warning py-2 px-4">
                           {cartItem.size && cartItem.size.character}
                         </span>
                       </td>
@@ -100,7 +99,7 @@ const Cart = () => {
                           {cartItem.toppings.length > 0 &&
                             cartItem.toppings.map((topping) => (
                               <span
-                                className="badge rounded-pill text-bg-secondary m-1 py-2 px-3"
+                                className="badge rounded-pill text-bg-warning m-1 py-2 px-3"
                                 key={`topping-${topping.id}`}
                               >
                                 {topping.name}
@@ -163,15 +162,15 @@ const Cart = () => {
       <div className="row">
         <div className="ms-auto col-md-6 mb-3">
           <div className="card h-100 border-0">
-            <h4>{t('Cart Totals')}</h4>
+            <h4>{t("Cart Totals")}</h4>
             <hr />
             <div>
               <div className="d-flex justify-content-between">
-                <p className="card-text">{t('Quantity')}</p>
+                <p className="card-text">{t("Quantity")}</p>
                 <p className="card-text">{cart.totalItems}</p>
               </div>
               <div className="d-flex justify-content-between">
-                <p className="card-text">{t('Subtotal')}</p>
+                <p className="card-text">{t("Subtotal")}</p>
                 <p className="card-text">
                   <NumericFormat
                     value={cart.totalPrice}
@@ -183,7 +182,7 @@ const Cart = () => {
               </div>
               <hr />
               <div className="d-flex justify-content-between">
-                <h6 className="card-text">{t('Total')}</h6>
+                <h6 className="card-text">{t("Total")}</h6>
                 <h6 className="card-text text-danger">
                   <NumericFormat
                     value={cart.totalPrice}
@@ -197,10 +196,14 @@ const Cart = () => {
               <div className="d-flex justify-content-end">
                 <button
                   className="btn btn-outline-white text-white "
-                  style={{ backgroundColor: "#e57905" }}
+                  style={{
+                    backgroundColor: "#e57905",
+                    minWidth: 130,
+                    height: 40,
+                  }}
                   onClick={handleCheckout}
                 >
-                  {t('btnCheckout')}
+                  {t("btnCheckout")}
                 </button>
               </div>
             </div>

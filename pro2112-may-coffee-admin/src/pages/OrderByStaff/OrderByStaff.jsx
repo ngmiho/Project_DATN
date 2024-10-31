@@ -24,7 +24,7 @@ const OrderByStaff = () => {
   };
 
   useEffect(() => {
-    getAllDrinks();
+    getDrinksByCategoryId(1);
     getAllCategories();
   }, []);
 
@@ -117,7 +117,7 @@ const OrderByStaff = () => {
             marginBottom: 20,
           }}
         >
-          <h2>Order Details</h2>
+          <h1>Order Details</h1>
         </div>
         <div className="panel panel-default table-responsive">
           <table className="table table-striped table-bordered templatemo-user-table">
@@ -315,7 +315,7 @@ const OrderByStaff = () => {
             marginBottom: 20,
           }}
         >
-          <h2>Menu</h2>
+          <h1>Menu</h1>
         </div>
 
         {/* Menu */}
@@ -324,7 +324,7 @@ const OrderByStaff = () => {
           <Select
             style={{ width: 200 }}
             options={categories}
-            defaultValue={"Select Category"}
+            defaultValue={1}
             onChange={(value) => getDrinksByCategoryId(value)}
           ></Select>
         </div>

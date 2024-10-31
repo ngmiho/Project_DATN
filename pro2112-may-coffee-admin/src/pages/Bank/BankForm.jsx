@@ -91,11 +91,7 @@ const BankForm = () => {
           >
             {(formik) => (
               <Form className="templatemo-login-form">
-                <FormikControl
-                  control="input"
-                  label="Bank name"
-                  name="name"
-                />
+                <FormikControl control="input" label="Bank name" name="name" />
 
                 <div className="form-group">
                   <button

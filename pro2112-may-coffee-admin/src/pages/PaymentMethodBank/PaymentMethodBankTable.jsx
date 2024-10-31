@@ -4,8 +4,13 @@ import { toast } from "react-toastify";
 import { fetchAllPaymentMethodBanks } from "../../services/PaymentMethodBankService";
 import { format as dateFormat } from "date-fns";
 import { NumericFormat } from "react-number-format";
-
 import { Space, Table } from "antd";
+import {
+  EditOutlined,
+  SearchOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
+import { EyeOutlined } from "@ant-design/icons";
 
 const PaymentMethodBankTable = () => {
   const [paymentMethodBanks, setPaymentMethodBanks] = useState([]);
@@ -101,18 +106,15 @@ const PaymentMethodBankTable = () => {
       dataIndex: "id",
       key: "action",
       render: (_, paymentMethodBank) => (
-        <Space size="middle">
-          <button
-            className="templatemo-edit-btn"
+        <>
+          <EyeOutlined
             onClick={() =>
               navigator(
                 `/admin/edit-payment-method-bank/${paymentMethodBank.id}`
               )
             }
-          >
-            Detail
-          </button>
-        </Space>
+          />
+        </>
       ),
     },
   ];

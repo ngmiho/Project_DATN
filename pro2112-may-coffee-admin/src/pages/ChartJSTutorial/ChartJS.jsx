@@ -267,153 +267,155 @@ const ChartJS = () => {
   ];
 
   return (
-    <div className="templatemo-content-widget white-bg">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
-        <h2>Dashboard</h2>
-      </div>
-
-      <div className="margin-bottom-30">
-        <RangePicker
-          format="DD-MM-YYYY"
-          onChange={(dates) => {
-            console.log("Date: ", dates);
-            if (dates) {
-              const startDate = dates[0].format("YYYY-MM-DD 00:00:00");
-              console.log("startDate: ", startDate);
-
-              const endDate = dates[1].format("YYYY-MM-DD 23:59:59");
-              console.log("endDate: ", endDate);
-
-              setDates({ startDate, endDate });
-            }
+    <>
+      <div className="templatemo-content-widget white-bg">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
           }}
-        />
-      </div>
-
-      <Space direction="horizontal" className="margin-bottom-30">
-        <DashboardCard
-          icon={
-            <DollarCircleOutlined
-              style={{
-                fontSize: 26,
-                padding: 10,
-                backgroundColor: "rgb(0, 255, 0, 0.25)",
-                borderRadius: 50,
-              }}
-            />
-          }
-          title={"Revenue"}
-          value={totalRevenue}
-          suffix={"đ"}
-        />
-        <DashboardCard
-          icon={
-            <ShoppingOutlined
-              style={{
-                fontSize: 26,
-                padding: 10,
-                backgroundColor: "rgb(0, 255, 255, 0.25)",
-                borderRadius: 50,
-              }}
-            />
-          }
-          title={"Order"}
-          value={totalOrders}
-        />
-        <DashboardCard
-          icon={
-            <CoffeeOutlined
-              style={{
-                fontSize: 26,
-                padding: 10,
-                backgroundColor: "rgb(255, 255, 0, 0.25)",
-                borderRadius: 50,
-              }}
-            />
-          }
-          title={"Drink"}
-          value={totalDrink}
-        />
-      </Space>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
-        <h3>Revenue By Date</h3>
-
-        <Button
-          type="primary"
-          onClick={() => handleExportToExcel(revenueByDate)}
         >
-          Export <FileExcelOutlined />
-        </Button>
-      </div>
+          <h1>Dashboard</h1>
+        </div>
 
-      <Table
-        columns={columnsOfRevenueTable}
-        dataSource={revenueByDate}
-        pagination={{
-          current: pageNumber,
-          pageSize: pageSize,
-          onChange: (pageNumber, pageSize) => {
-            setPageNumber(pageNumber), setPageSize(pageSize);
-          },
-        }}
-      ></Table>
+        <div className="margin-bottom-30">
+          <RangePicker
+            format="DD-MM-YYYY"
+            onChange={(dates) => {
+              console.log("Date: ", dates);
+              if (dates) {
+                const startDate = dates[0].format("YYYY-MM-DD 00:00:00");
+                console.log("startDate: ", startDate);
 
-      <LineChart
-        chartTitle="Revenue By Date Line Chart"
-        lineChartData={lineChartData}
-      ></LineChart>
+                const endDate = dates[1].format("YYYY-MM-DD 23:59:59");
+                console.log("endDate: ", endDate);
 
-      <hr />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
-        <h3>Revenue By Drink</h3>
+                setDates({ startDate, endDate });
+              }
+            }}
+          />
+        </div>
 
-        <Button
-          type="primary"
-          onClick={() => handleExportToExcel(revenueByDrink)}
+        <Space direction="horizontal" className="margin-bottom-30">
+          <DashboardCard
+            icon={
+              <DollarCircleOutlined
+                style={{
+                  fontSize: 26,
+                  padding: 10,
+                  backgroundColor: "rgb(0, 255, 0, 0.25)",
+                  borderRadius: 50,
+                }}
+              />
+            }
+            title={"Revenue"}
+            value={totalRevenue}
+            suffix={"đ"}
+          />
+          <DashboardCard
+            icon={
+              <ShoppingOutlined
+                style={{
+                  fontSize: 26,
+                  padding: 10,
+                  backgroundColor: "rgb(0, 255, 255, 0.25)",
+                  borderRadius: 50,
+                }}
+              />
+            }
+            title={"Order"}
+            value={totalOrders}
+          />
+          <DashboardCard
+            icon={
+              <CoffeeOutlined
+                style={{
+                  fontSize: 26,
+                  padding: 10,
+                  backgroundColor: "rgb(255, 255, 0, 0.25)",
+                  borderRadius: 50,
+                }}
+              />
+            }
+            title={"Drink"}
+            value={totalDrink}
+          />
+        </Space>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
         >
-          Export <FileExcelOutlined />
-        </Button>
+          <h3>Revenue By Date</h3>
+
+          <Button
+            type="primary"
+            onClick={() => handleExportToExcel(revenueByDate)}
+          >
+            Export <FileExcelOutlined />
+          </Button>
+        </div>
+
+        <Table
+          columns={columnsOfRevenueTable}
+          dataSource={revenueByDate}
+          pagination={{
+            current: pageNumber,
+            pageSize: pageSize,
+            onChange: (pageNumber, pageSize) => {
+              setPageNumber(pageNumber), setPageSize(pageSize);
+            },
+          }}
+        ></Table>
+
+        <LineChart
+          chartTitle="Revenue By Date Line Chart"
+          lineChartData={lineChartData}
+        ></LineChart>
+
+        <hr />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
+        >
+          <h3>Revenue By Drink</h3>
+
+          <Button
+            type="primary"
+            onClick={() => handleExportToExcel(revenueByDrink)}
+          >
+            Export <FileExcelOutlined />
+          </Button>
+        </div>
+
+        <Table
+          columns={columnsOfDrinkTable}
+          dataSource={revenueByDrink}
+          pagination={{
+            current: pageNumber,
+            pageSize: pageSize,
+            onChange: (pageNumber, pageSize) => {
+              setPageNumber(pageNumber), setPageSize(pageSize);
+            },
+          }}
+        ></Table>
+
+        <BarChart
+          chartTitle="Revenue By Drink Bar Chart"
+          barChartData={barChartData}
+        ></BarChart>
       </div>
-
-      <Table
-        columns={columnsOfDrinkTable}
-        dataSource={revenueByDrink}
-        pagination={{
-          current: pageNumber,
-          pageSize: pageSize,
-          onChange: (pageNumber, pageSize) => {
-            setPageNumber(pageNumber), setPageSize(pageSize);
-          },
-        }}
-      ></Table>
-
-      <BarChart
-        chartTitle="Revenue By Drink Bar Chart"
-        barChartData={barChartData}
-      ></BarChart>
-    </div>
+    </>
   );
 };
 

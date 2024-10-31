@@ -5,12 +5,10 @@ import FormikControl from "../../components/FormControl/FormikControl";
 import { postRegister } from "../../services/UserService";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {useTranslation} from 'react-i18next'
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
-  
-  
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigator = useNavigate();
 
   const initialValues = {
@@ -25,18 +23,16 @@ const Register = () => {
   const regexPhoneNumber = /^(84|0[3|5|7|8|9])+([0-9]{8})/;
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required(t('required')),
-    lastName: Yup.string().required(t('required')),
-    email: Yup.string().email(t("Invalid email")).required(t('required')),
+    firstName: Yup.string().required(t("required")),
+    lastName: Yup.string().required(t("required")),
+    email: Yup.string().email(t("Invalid email")).required(t("required")),
     phoneNumber: Yup.string()
-      .matches(regexPhoneNumber, t('phonevalid'))
-      .required(t('required')),
-    password: Yup.string()
-      .required(t('required'))
-      .min(8, t('passMin')),
+      .matches(regexPhoneNumber, t("phonevalid"))
+      .required(t("required")),
+    password: Yup.string().required(t("required")).min(8, t("passMin")),
     confirmedPassword: Yup.string()
-      .required(t('required'))
-      .oneOf([Yup.ref("password")], t('confirmPass')),
+      .required(t("required"))
+      .oneOf([Yup.ref("password")], t("confirmPass")),
   });
 
   const onSubmit = (values) => {
@@ -59,65 +55,91 @@ const Register = () => {
   };
 
   return (
-    <div className="container my-3">
-      <div className="row">
-        <div className="card col-10 col-md-6 mx-auto shadow-sm border-0 rounded-4">
-          <div className="card-body">
-            <h3 className="text-center">{t('Register')}</h3>
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-              validateOnChange={false}
-            >
-              {(formik) => (
-                <Form>
-                  <FormikControl control="input" label="Email" name="email" />
-                  <div className="row">
-                    <div className="col-6">
-                      <FormikControl
-                        control="input"
-                        label={t("First name")}
-                        name="firstName"
-                      />
+    <div className="container my-5">
+      <div className="card text-bg-dark">
+        <img
+          src="https://thumbs.dreamstime.com/b/empty-wood-table-blur-cafe-coffee-shop-background-top-152533401.jpg"
+          className="card-img"
+          alt="..."
+        />
+        <div className="card-img-overlay">
+          <div className="card col-md-6 mx-auto shadow border-1 rounded-4 p-5">
+            <div className="card-body">
+              <h1 className="card-title text-center mb-5">{t("Register")}</h1>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+                validateOnChange={false}
+              >
+                {(formik) => (
+                  <Form>
+                    <FormikControl control="input" label="Email" name="email" />
+                    <div className="row">
+                      <div className="col-6">
+                        <FormikControl
+                          control="input"
+                          label={t("First name")}
+                          name="firstName"
+                        />
+                      </div>
+                      <div className="col-6">
+                        <FormikControl
+                          control="input"
+                          label={t("Last name")}
+                          name="lastName"
+                        />
+                      </div>
                     </div>
-                    <div className="col-6">
-                      <FormikControl
-                        control="input"
-                        label={t("Last name")}
-                        name="lastName"
-                      />
-                    </div>
-                  </div>
-                  <FormikControl
-                    control="input"
-                    label={t("Phone number")}
-                    name="phoneNumber"
-                  />
-                  <FormikControl
-                    control="input"
-                    type="password"
-                    label={t("Password")}
-                    name="password"
-                  />
-                  <FormikControl
-                    control="input"
-                    type="password"
-                    label={t("Confirmed Password")}
-                    name="confirmedPassword"
-                  />
+                    <FormikControl
+                      control="input"
+                      label={t("Phone number")}
+                      name="phoneNumber"
+                    />
+                    <FormikControl
+                      control="input"
+                      type="password"
+                      label={t("Password")}
+                      name="password"
+                    />
+                    <FormikControl
+                      control="input"
+                      type="password"
+                      label={t("Confirmed Password")}
+                      name="confirmedPassword"
+                    />
 
-                  <div className="mb-3">
-                    <button type="submit" className="btn btn-primary me-2">
-                    {t('Register')}
-                    </button>
-                    <button type="reset" className="btn btn-secondary">
-                    {t('Cancel')}
-                    </button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                    <div className="pt-3">
+                      <button
+                        type="submit"
+                        className="btn btn-warning me-2"
+                        style={{ minWidth: 130, height: 40 }}
+                      >
+                        {t("Register")}
+                      </button>
+                      <button
+                        type="reset"
+                        className="btn"
+                        style={{
+                          minWidth: 130,
+                          height: 40,
+                          backgroundColor: "#FEF08A",
+                          color: "black",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.target.style.backgroundColor = "#FDE047")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.target.style.backgroundColor = "#FEF08A")
+                        }
+                      >
+                        {t("Cancel")}
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>

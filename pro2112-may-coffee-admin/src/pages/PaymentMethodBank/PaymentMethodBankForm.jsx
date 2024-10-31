@@ -30,6 +30,7 @@ const PaymentMethodBankForm = () => {
         ...paymentMethodBank,
         paymentMethodId: paymentMethodBank.paymentMethod.id,
         bankId: paymentMethodBank.bank.id,
+        payDay: new Date(paymentMethodBank.payDate),
       });
     }
   };
@@ -61,14 +62,15 @@ const PaymentMethodBankForm = () => {
     getBanks();
   }, []);
 
-  const initialValues = {
+  const [initialValues, setInitialValues] = useState({
     owner: "",
     creditCard: "",
     totalPrice: 0,
     date: "",
     paymentMethodId: 1,
     bankId: "",
-  };
+    payDate: "",
+  });
 
   const onSubmit = (values, onSubmitProps) => {
     console.log("Form data: ", values);
@@ -93,6 +95,7 @@ const PaymentMethodBankForm = () => {
     date: Yup.string().required("Required"),
     paymentMethodId: Yup.number().required("Required"),
     bankId: Yup.number().required("Required"),
+    payDate: Yup.date().nullable(),
   });
 
   const handleSavePaymentMethodBank = async (data) => {
@@ -133,17 +136,30 @@ const PaymentMethodBankForm = () => {
           >
             {(formik) => (
               <Form className="templatemo-login-form">
-                <FormikControl control="input" label="Owner" name="owner" />
                 <FormikControl
                   control="input"
-                  label="Credit Card"
-                  name="creditCard"
-                  disab
+                  label="Transaction Number"
+                  name="transactionNo"
+                />
+                <FormikControl
+                  control="input"
+                  label="Card Type"
+                  name="cardType"
                 />
                 <FormikControl
                   control="input"
                   label="Total Price"
-                  name="totalPrice"
+                  name="amount"
+                />
+                <FormikControl
+                  control="date"
+                  label="Payment Date"
+                  name="payDate"
+                />
+                <FormikControl
+                  control="input"
+                  label="Bank Transaction Number"
+                  name="bankTranNo"
                 />
                 <div className={`form-group`}>
                   <label htmlFor="paymentMethodId" className="control-label">

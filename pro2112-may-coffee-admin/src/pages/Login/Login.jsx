@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <div
       className="templatemo-content-widget no-padding"
-      style={{ width: "50%", margin: "auto" }}
+      style={{ width: "30%", margin: "auto" }}
     >
       <div className="panel panel-default">
         <div className="panel-heading">

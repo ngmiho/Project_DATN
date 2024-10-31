@@ -10,6 +10,7 @@ import {
 } from "../../services/DrinkService";
 import { NumericFormat } from "react-number-format";
 import { useTranslation } from "react-i18next";
+import "./Menu.css";
 
 const Menu = () => {
   const { t } = useTranslation();
@@ -68,43 +69,46 @@ const Menu = () => {
   }, [id]);
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-5">
       <div className="row">
         <div className="col-md-3">
           <div className="list-group list-group-flush shadow-sm rounded">
             {categories &&
               categories.length &&
-              categories.map((category, index) => (
-                <NavLink
-                  key={`category-${index}`}
-                  to={`/menu/category/${category.id}`}
-                  className="list-group-item  list-group-item-light list-group-item-action border-0"
-                >
-                  {category.name}
-                </NavLink>
-              ))}
+              categories
+                .filter((e) => e.id != 0)
+                .map((category, index) => (
+                  <NavLink
+                    key={`category-${index}`}
+                    to={`/menu/category/${category.id}`}
+                    className="list-group-item list-group-item-light list-group-item-action border-0 brown-active"
+                  >
+                    {category.name}
+                  </NavLink>
+                ))}
           </div>
         </div>
         <div className="col-md-9 shadow-sm rounded">
           <div className="category-drink row">
-            <h4>{category ? category.name : "Menu"}</h4>
+            <h2>{category ? category.name : "Menu"}</h2>
             {drinks &&
               drinks.length &&
               drinks.map((drink, index) => (
                 <div
-                  className="col-6 col-md-4 col-lg-3 mb-3"
+                  className="col-6 col-md-4 mb-3 shadow-sm"
                   key={`drink-${index}`}
                 >
-                  <div className="card border-0">
+                  <Link
+                    className="nav-link card border-0"
+                    to={`/drinks/${drink.id}`}
+                  >
                     <img
                       src={drink.images[0]}
                       className="card-img-top h-50"
                       alt={drink.name}
                     />
                     <div className="card-body px-0">
-                      <Link to={`/drinks/${drink.id}`} className="nav-link">
-                        <h5 className="card-title">{drink.name}</h5>
-                      </Link>
+                      <h5 className="card-title">{drink.name}</h5>
                       <NumericFormat
                         className="card-text text-secondary"
                         value={drink.price}
@@ -113,7 +117,7 @@ const Menu = () => {
                         suffix=" đ"
                       />
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
           </div>

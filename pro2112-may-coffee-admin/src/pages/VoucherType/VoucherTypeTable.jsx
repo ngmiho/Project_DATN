@@ -6,6 +6,7 @@ import {
   deleteVoucherTypeById,
 } from "../../services/VoucherTypeService";
 import { Space, Table } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const VoucherTypeTable = () => {
   const [voucherTypes, setVoucherTypes] = useState([]);
@@ -57,22 +58,18 @@ const VoucherTypeTable = () => {
       dataIndex: "id",
       key: "action",
       render: (_, voucherType) => (
-        <Space size="middle">
-          <button
-            className="templatemo-edit-btn"
+        <>
+          <EditOutlined
             onClick={() =>
               navigator(`/admin/edit-voucher-type/${voucherType.id}`)
             }
-          >
-            Edit
-          </button>
-          <button
-            className="templatemo-delete-btn"
+            style={{ marginRight: 10 }}
+          />
+          <DeleteOutlined
+            style={{ color: "red" }}
             onClick={() => deleteVoucherType(voucherType.id)}
-          >
-            Delete
-          </button>
-        </Space>
+          />
+        </>
       ),
     },
   ];

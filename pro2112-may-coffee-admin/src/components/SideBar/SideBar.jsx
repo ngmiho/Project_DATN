@@ -21,20 +21,11 @@ const SideBar = () => {
   return (
     <div className="templatemo-sidebar">
       <header className="templatemo-site-header">
-        <h2 style={{ color: "white" }}>May Coffee Admin</h2>
+        <h2 style={{ color: "white" }}>May Coffee & Tea Admin</h2>
       </header>
 
       <form className="templatemo-search-form" role="search">
-        <div className="input-group">
-          <button type="submit" className="fa fa-search"></button>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search"
-            name="srch-term"
-            id="srch-term"
-          />
-        </div>
+        <div className="input-group"></div>
       </form>
       <div className="mobile-menu-icon">
         <i className="fa fa-bars"></i>
@@ -99,11 +90,6 @@ const SideBar = () => {
           <li>
             <NavLink to={"/admin/banks"} style={{ textDecoration: "none" }}>
               <i className="fa fa-sliders fa-fw"></i>Manage Bank
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"/admin/banks2"} style={{ textDecoration: "none" }}>
-              <i className="fa fa-sliders fa-fw"></i> Manage Bank2
             </NavLink>
           </li>
           <li>

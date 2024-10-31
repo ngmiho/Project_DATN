@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import NavBar from "./components/NavBar/NavBar";
+import HomeBannerCarousel from "./pages/Home/HomeBannerCarousel";
 import Home from "./pages/Home/Home";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Menu from "./pages/Menu/Menu";
